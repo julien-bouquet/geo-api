@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: "geo-api"
+    image: golang:latest
+    working_dir: /api
+    env_file:
+      - .env
+    volumes:
+      - ".:/api"
+    entrypoint: ["./entrypoint.sh", "reflex", "-c", "reflex.conf"]
+    depends_on:
+      - db
+
+  db:
+    container_name: "geo-db"
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - ${DB_PORT}:27017
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${DB_USER}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${DB_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongodb://${DB_USER}:${DB_PASSWORD}@db:${DB_PORT}/
+    depends_on:
+      - db
