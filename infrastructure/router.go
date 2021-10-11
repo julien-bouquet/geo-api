@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/coast-nav-api/interfaces"
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic"
 )
 
 func setSubRouterApi(router *mux.Router, pointControler interfaces.PointController) {

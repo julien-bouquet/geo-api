@@ -17,7 +17,7 @@ Object Point:
 
 
 List Issue : 
-- Try Gin-gonic to replace 	"github.com/gorilla/mux"
+- Try Gin-gonic to replace 	"github.com/gin-gonic"
 - End of application to create/update/get/delete point 
 - Swagger
 - DockerCompose to start application and mongodb
