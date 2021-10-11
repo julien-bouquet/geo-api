@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/coast-nav-api/domain"
 	"github.com/coast-nav-api/usecases"
 )
 
@@ -27,6 +28,7 @@ func setHeaderContentType(w http.ResponseWriter) {
 
 func (mc *PointController) List(w http.ResponseWriter, r *http.Request) {
 	setHeaderContentType(w)
+
 	points, err := mc.PointInteractor.GetAll()
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -38,7 +40,15 @@ func (mc *PointController) List(w http.ResponseWriter, r *http.Request) {
 }
 
 func (mc *PointController) Add(w http.ResponseWriter, r *http.Request) {
-	mc.PointInteractor.Add()
 	setHeaderContentType(w)
+
+	point := domain.Point{}
+	err := json.NewDecoder(r.Body).Decode(&point)
+	if err != nil {
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(err)
+	}
+
+	mc.PointInteractor.Add(point)
 
 }
