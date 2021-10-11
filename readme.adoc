@@ -1,0 +1,25 @@
+# Golang API with Hexagonal Architecture
+
+API to manage point of navigation
+
+Object Point: 
+- Name
+- Latitude
+- Longiture
+
+## TODO  
+
+- [ ] Create point in Mongodb
+- [X] List points
+- [ ] Update point
+- [ ] Get one point
+- [ ] Delete Point
+
+
+List Issue : 
+- Try Gin-gonic to replace 	"github.com/gorilla/mux"
+- End of application to create/update/get/delete point 
+- Swagger
+- DockerCompose to start application and mongodb
+- Script to initialize database
+- Add Test
