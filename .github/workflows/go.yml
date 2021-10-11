@@ -23,3 +23,13 @@ jobs:
 
     - name: Test
       run: go test -v 
+      
+    - name: Install dependencies
+      run: |
+        go version
+        go get -u golang.org/x/lint/golint
+        
+    - name: Run vet & lint
+      run: |
+        go vet .
+        golint .
