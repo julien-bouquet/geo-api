@@ -56,8 +56,16 @@ func (noSQLHander *Collection) Get() (interfaces.Documents, error) {
 	return row, nil
 }
 
-func (noSQLHander *Collection) Add(args ...interface{}) error {
+func (noSQLHander *Collection) Add(args interface{}) error {
 	_, err := noSQLHander.Collection.InsertOne(ctx, args)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (noSQLHander *Collection) Delete(args interface{}) error {
+	_, err := noSQLHander.Collection.DeleteOne(ctx, args)
 	if err != nil {
 		return err
 	}

@@ -2,7 +2,8 @@ package interfaces
 
 type NoSQLHandler interface {
 	Get() (Documents, error)
-	Add(...interface{}) error
+	Add(interface{}) error
+	Delete(interface{}) error
 }
 
 type Documents interface {

@@ -44,3 +44,11 @@ func (mr *PointRepository) Add(point domain.Point) (err error) {
 	}
 	return nil
 }
+
+func (mr *PointRepository) Delete(point domain.Point) (err error) {
+	err = mr.NoSQLHandler.Delete(point)
+	if err != nil {
+		return err
+	}
+	return nil
+}
