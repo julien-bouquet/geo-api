@@ -27,7 +27,9 @@ var ctx = context.TODO()
 
 func NewMongoDBHandler() (interfaces.NoSQLHandler, error) {
 	noSqlHandler := &Collection{}
-	clientOptions := options.Client().ApplyURI(fmt.Sprintf("mongodb://db:%s", os.Getenv("DB_PORT")))
+	clientOptions := options.Client().ApplyURI(
+		fmt.Sprintf("mongodb://%s:%s@db:%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_PORT")),
+	)
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		return nil, err
