@@ -2,6 +2,8 @@ package infrastructure
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	"github.com/coast-nav-api/interfaces"
 	"go.mongodb.org/mongo-driver/bson"
@@ -25,7 +27,7 @@ var ctx = context.TODO()
 
 func NewMongoDBHandler() (interfaces.NoSQLHandler, error) {
 	noSqlHandler := &Collection{}
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017/")
+	clientOptions := options.Client().ApplyURI(fmt.Sprintf("mongodb://db:%s", os.Getenv("DB_PORT")))
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		return nil, err
