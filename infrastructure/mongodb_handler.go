@@ -38,15 +38,16 @@ func NewMongoDBHandler() (interfaces.NoSQLHandler, error) {
 	if err != nil {
 		return nil, err
 	}
-	collection := client.Database("point-app").Collection("point")
+	collection := client.Database("geo-app-db").Collection("point")
 	noSqlHandler.Collection = collection
 
 	return noSqlHandler, nil
 }
 
-func (noSQLHander *Collection) Get(args ...interface{}) (interfaces.Documents, error) {
+func (noSQLHander *Collection) Get() (interfaces.Documents, error) {
 	filter := bson.D{{}}
 	cursor, err := noSQLHander.Collection.Find(ctx, filter)
+
 	if err != nil {
 		return nil, err
 	}
@@ -63,8 +64,8 @@ func (noSQLHander *Collection) Add(args ...interface{}) error {
 	return nil
 }
 
-func (r *Cursor) Read(args ...interface{}) error {
-	return r.Results.Decode(ctx)
+func (r *Cursor) Read(args interface{}) error {
+	return r.Results.Decode(args)
 }
 
 func (r *Cursor) Next(args ...interface{}) bool {

@@ -33,6 +33,7 @@ func (mc *PointController) List(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(w).Encode(err)
+		return
 	}
 
 	w.WriteHeader(http.StatusOK)
@@ -47,6 +48,7 @@ func (mc *PointController) Add(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(err)
+		return
 	}
 
 	mc.PointInteractor.Add(point)
