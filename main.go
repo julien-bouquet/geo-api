@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/coast-nav-api/infrastructure"
+	"github.com/geo-api/infrastructure"
 )
 
 func main() {

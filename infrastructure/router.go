@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/coast-nav-api/interfaces"
+	"github.com/geo-api/interfaces"
 	"github.com/gorilla/mux"
 )
 

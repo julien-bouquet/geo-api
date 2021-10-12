@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/coast-nav-api/domain"
-	"github.com/coast-nav-api/usecases"
+	"github.com/geo-api/domain"
+	"github.com/geo-api/usecases"
 )
 
 type PointController struct {

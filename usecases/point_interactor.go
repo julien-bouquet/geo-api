@@ -1,6 +1,6 @@
 package usecases
 
-import "github.com/coast-nav-api/domain"
+import "github.com/geo-api/domain"
 
 type PointInteractor struct {
 	PointRepository PointRepository

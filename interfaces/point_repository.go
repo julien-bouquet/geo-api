@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	"github.com/coast-nav-api/domain"
+	"github.com/geo-api/domain"
 )
 
 type PointRepository struct {

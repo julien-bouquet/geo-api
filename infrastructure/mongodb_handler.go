@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/coast-nav-api/interfaces"
+	"github.com/geo-api/interfaces"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
