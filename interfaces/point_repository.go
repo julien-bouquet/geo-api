@@ -27,7 +27,7 @@ func (mr *PointRepository) GetAll() (points domain.Points, err error) {
 			return points, err
 		}
 
-		points = append(points, point)
+		points = append(points, &point)
 	}
 
 	if err = docs.Err(); err != nil {
