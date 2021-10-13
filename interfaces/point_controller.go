@@ -54,3 +54,17 @@ func (mc *PointController) Add(w http.ResponseWriter, r *http.Request) {
 	mc.PointInteractor.Add(point)
 
 }
+
+func (mc *PointController) Delete(w http.ResponseWriter, r *http.Request) {
+	setHeaderContentType(w)
+
+	point := domain.Point{}
+	err := json.NewDecoder(r.Body).Decode(&point)
+	if err != nil {
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(err)
+		return
+	}
+
+	mc.PointInteractor.Delete(point)
+}

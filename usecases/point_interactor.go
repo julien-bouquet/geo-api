@@ -13,3 +13,7 @@ func (mi *PointInteractor) GetAll() (points domain.Points, err error) {
 func (mi *PointInteractor) Add(point domain.Point) (err error) {
 	return mi.PointRepository.Add(point)
 }
+
+func (mi *PointInteractor) Delete(point domain.Point) (err error) {
+	return mi.PointRepository.Delete(point)
+}
