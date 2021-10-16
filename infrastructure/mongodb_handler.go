@@ -44,8 +44,14 @@ func NewMongoDBHandler() (interfaces.NoSQLHandler, error) {
 	return noSqlHandler, nil
 }
 
-func (noSQLHander *Collection) Get() (interfaces.Documents, error) {
+func (noSQLHander *Collection) Get(args map[string]interface{}) (interfaces.Documents, error) {
 	filter := bson.D{{}}
+	if args != nil {
+		for key, value := range args {
+			filter = append(filter, bson.E{Key: key, Value: value})
+		}
+	}
+
 	cursor, err := noSQLHander.Collection.Find(ctx, filter)
 
 	if err != nil {

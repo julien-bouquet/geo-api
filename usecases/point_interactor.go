@@ -6,6 +6,10 @@ type PointInteractor struct {
 	PointRepository PointRepository
 }
 
+func (mi *PointInteractor) Get(name string) (point *domain.Point, err error) {
+	return mi.PointRepository.Get(name)
+}
+
 func (mi *PointInteractor) GetAll() (points domain.Points, err error) {
 	return mi.PointRepository.GetAll()
 }

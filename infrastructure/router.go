@@ -12,6 +12,7 @@ import (
 func setSubRouterApi(router *mux.Router, pointControler interfaces.PointController) {
 	api := router.PathPrefix("/api/v1").Subrouter()
 	api.HandleFunc("/point", pointControler.List).Methods(http.MethodGet)
+	api.HandleFunc("/point/{name}", pointControler.Get).Methods(http.MethodGet)
 	api.HandleFunc("/point", pointControler.Add).Methods(http.MethodPost)
 	api.HandleFunc("/point", pointControler.Delete).Methods(http.MethodDelete)
 }
