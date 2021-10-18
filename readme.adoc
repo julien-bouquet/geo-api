@@ -12,7 +12,7 @@ Object Point:
 - [ ] Create point in Mongodb
 - [X] List points
 - [ ] Update point
-- [ ] Get one point
+- [X] Get one point
 - [ ] Delete Point
 
 

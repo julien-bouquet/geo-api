@@ -12,8 +12,27 @@ type PointRepository struct {
 
 var ctx = context.TODO()
 
+func (mr *PointRepository) Get(name string) (point *domain.Point, err error) {
+	doc, err := mr.NoSQLHandler.Get(map[string]interface{}{"name": name})
+	if err != nil {
+		return nil, err
+	}
+
+	defer doc.Close()
+	if err = doc.Err(); err != nil {
+		return nil, err
+	}
+
+	err = doc.Read(point)
+	if err != nil {
+		return nil, err
+	}
+
+	return point, err
+}
+
 func (mr *PointRepository) GetAll() (points domain.Points, err error) {
-	docs, err := mr.NoSQLHandler.Get()
+	docs, err := mr.NoSQLHandler.Get(nil)
 
 	if err != nil {
 		return nil, err
