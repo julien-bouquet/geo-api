@@ -78,6 +78,14 @@ func (noSQLHander *Collection) Delete(args interface{}) error {
 	return nil
 }
 
+func (noSQLHander *Collection) Update(filterValue string, args interface{}) error {
+	filter := bson.D{{"name", filterValue}}
+	update := bson.D{{"$set", args}}
+
+	_ = noSQLHander.Collection.FindOneAndUpdate(ctx, filter, update)
+	return nil
+}
+
 func (r *Cursor) Read(args interface{}) error {
 	return r.Results.Decode(args)
 }

@@ -7,4 +7,5 @@ type PointRepository interface {
 	GetAll() (domain.Points, error)
 	Add(domain.Point) error
 	Delete(domain.Point) error
+	Update(domain.Point) error
 }

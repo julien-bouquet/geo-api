@@ -84,3 +84,17 @@ func (mc *PointController) Delete(w http.ResponseWriter, r *http.Request) {
 
 	mc.PointInteractor.Delete(point)
 }
+
+func (mc *PointController) Update(w http.ResponseWriter, r *http.Request) {
+	setHeaderContentType(w)
+
+	point := domain.Point{}
+	err := json.NewDecoder(r.Body).Decode(&point)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(err)
+		return
+	}
+
+	mc.PointInteractor.Update(point)
+}

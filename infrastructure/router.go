@@ -15,6 +15,7 @@ func setSubRouterApi(router *mux.Router, pointControler interfaces.PointControll
 	api.HandleFunc("/point/{name}", pointControler.Get).Methods(http.MethodGet)
 	api.HandleFunc("/point", pointControler.Add).Methods(http.MethodPost)
 	api.HandleFunc("/point", pointControler.Delete).Methods(http.MethodDelete)
+	api.HandleFunc("/point", pointControler.Update).Methods(http.MethodPut)
 }
 
 func HandleRequest(noSQLHander interfaces.NoSQLHandler) {

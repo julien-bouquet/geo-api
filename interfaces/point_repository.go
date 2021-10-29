@@ -71,3 +71,11 @@ func (mr *PointRepository) Delete(point domain.Point) (err error) {
 	}
 	return nil
 }
+
+func (mr *PointRepository) Update(point domain.Point) (err error) {
+	err = mr.NoSQLHandler.Update(point.Name, point)
+	if err != nil {
+		return err
+	}
+	return nil
+}

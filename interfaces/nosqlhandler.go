@@ -4,6 +4,7 @@ type NoSQLHandler interface {
 	Get(map[string]interface{}) (Documents, error)
 	Add(interface{}) error
 	Delete(interface{}) error
+	Update(string, interface{}) error
 }
 
 type Documents interface {

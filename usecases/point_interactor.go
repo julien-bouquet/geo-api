@@ -21,3 +21,7 @@ func (mi *PointInteractor) Add(point domain.Point) (err error) {
 func (mi *PointInteractor) Delete(point domain.Point) (err error) {
 	return mi.PointRepository.Delete(point)
 }
+
+func (mi *PointInteractor) Update(point domain.Point) (err error) {
+	return mi.PointRepository.Update(point)
+}
